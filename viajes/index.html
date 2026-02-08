@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viajes Aventura | Destinos Exclusivos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        :root {
+            --primary-color: #003580; /* Azul profundo */
+            --secondary-color: #f77f00; /* Naranja vibrante */
+            --text-dark: #333;
+            --text-light: #f4f4f4;
+            --bg-light: #f9faff;
+        }
+        body { margin: 0; font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; margin: 0; }
+        a { text-decoration: none; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; }
+        
+        /* --- BOTONES --- */
+        .btn { display: inline-block; padding: 15px 35px; border-radius: 50px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; border: none; cursor: pointer; }
+        .btn-orange { background: var(--secondary-color); color: white; box-shadow: 0 4px 15px rgba(247, 127, 0, 0.3); }
+        .btn-orange:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(247, 127, 0, 0.4); }
+        .btn-outline { border: 2px solid var(--primary-color); color: var(--primary-color); background: transparent; padding: 12px 30px; }
+        .btn-outline:hover { background: var(--primary-color); color: white; }
+
+        /* --- FORMULARIOS --- */
+        input, select, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; background: #fff; font-family: inherit; box-sizing: border-box; transition: border 0.3s; }
+        input:focus, select:focus { outline: none; border-color: var(--primary-color); }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--primary-color); }
+
+        /* --- HEADER & HERO --- */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px; position: absolute; width: 100%; z-index: 10; box-sizing: border-box; }
+        .logo { font-family: 'Montserrat'; font-weight: 900; font-size: 1.5rem; color: white; }
+        .nav-contact { color: white; font-weight: 600; }
+        
+        .hero { 
+            /* Fondo de imagen realista (puedes cambiar la URL) */
+            background: linear-gradient(rgba(0, 53, 128, 0.5), rgba(0, 53, 128, 0.7)), url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&auto=format&fit=crop&w=1368&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1; }
+        .hero p { font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9; }
+
+        /* --- SECCIONES ESPECÍFICAS --- */
+        .intro-video { text-align: center; background: var(--bg-light); }
+        .video-wrapper { max-width: 800px; margin: 40px auto 0; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-radius: 12px; overflow: hidden; }
+        
+        .booking-section { background: white; }
+        .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .booking-form-box { background: var(--bg-light); padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+        .resources-section { background: var(--primary-color); color: white; }
+        .resources-section h2 { color: white; }
+        .download-btn { display: flex; align-items: center; background: rgba(255,255,255,0.1); padding: 15px; margin-bottom: 15px; border-radius: 8px; color: white; transition: background 0.3s; }
+        .download-btn:hover { background: rgba(255,255,255,0.2); }
+        .download-icon { font-size: 1.5rem; margin-right: 15px; }
+
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.08); }
+        .contact-image { background: url('https://images.unsplash.com/photo-1553531384-cc64ac80f931?ixlib=rb-4.0.3&auto=format&fit=crop&w=764&q=80') center/cover; min-height: 400px; }
+        .contact-form-wrapper { padding: 60px; }
+        #msg-contacto-exito { display: none; background: #d4edda; color: #155724; padding: 20px; border-radius: 8px; text-align: center; margin-top: 20px; font-weight: 600; }
+
+        footer { background: #1a1a1a; color: #888; padding: 80px 0 40px; text-align: center; }
+        .newsletter-box { max-width: 500px; margin: 0 auto 60px; }
+        .newsletter-box input { background: #333; border-color: #444; color: white; }
+        #mensaje-newsletter { display: none; color: var(--secondary-color); font-weight: bold; margin-top: 15px; }
+        .footer-links a { color: #888; margin: 0 10px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .booking-grid, .contact-grid { grid-template-columns: 1fr; }
+            .contact-image { height: 250px; min-height: auto; }
+            .contact-form-wrapper { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="container">
+        <div class="logo">VIAJES AVENTURA</div>
+        <div>
+            <a href="tel:+34900555555" class="nav-contact">📞 Llámanos: 900 555 555</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Descubre el mundo que no sale en las guías</h1>
+            <p>Experiencias de viaje diseñadas a medida para espíritus libres.</p>
+            <a href="#reserva" class="btn btn-orange">Encontrar mi próximo destino</a>
+        </div>
+    </header>
+
+    <section class="intro-video">
+        <div class="container">
+            <h2>Nuestra filosofía de viaje</h2>
+            <p>Mira cómo transformamos unas vacaciones en una aventura.</p>
+            <div class="video-wrapper">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/ScMzIvxBSi4?enablejsapi=1&rel=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reserva" class="booking-section">
+        <div class="container">
+            <div class="booking-grid">
+                <div>
+                    <h2>Tu próxima gran historia comienza aquí</h2>
+                    <p>Selecciona tu destino preferido y comprueba la disponibilidad inmediata. Te llevaremos a la página de confirmación.</p>
+                    <ul style="margin-top: 30px; padding-left: 20px; color: var(--primary-color);">
+                        <li>Grupos reducidos (máx. 12 personas)</li>
+                        <li>Guías locales expertos</li>
+                        <li>Seguro de aventura incluido</li>
+                    </ul>
+                </div>
+                <div class="booking-form-box">
+                    <h3>Consulta Disponibilidad</h3>
+                    <form id="form-reserva">
+                        <div class="form-group">
+                            <label>Destino soñado</label>
+                            <select required>
+                                <option value="">Selecciona una opción...</option>
+                                <option value="bali">Bali: Templos y Volcanes</option>
+                                <option value="costa-rica">Costa Rica: Pura Vida</option>
+                                <option value="islandia">Islandia: Auroras Boreales</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>¿Cuándo quieres viajar?</label>
+                            <select required>
+                                <option value="">Selecciona mes...</option>
+                                <option value="verano">Verano 2024</option>
+                                <option value="otono">Otoño 2024</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-orange" style="width: 100%;">Ver Opciones</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="resources-section">
+        <div class="container booking-grid">
+            <div>
+                <h2>Recursos para viajeros</h2>
+                <p>Descarga nuestras guías gratuitas y catálogos antes de decidirte.</p>
+                <div style="margin-top: 30px;">
+                    <a href="/archivos/catalogo2024.pdf" class="download-btn">
+                        <span class="download-icon">📄</span> Catálogo de Experiencias 2024 (PDF)
+                    </a>
+                    <a href="/archivos/tarifas.docx" class="download-btn">
+                        <span class="download-icon">📝</span> Tarifas y Condiciones (DOCX)
+                    </a>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                 <h3>¿Prefieres hablar con un humano?</h3>
+                 <p style="color: rgba(255,255,255,0.8)">Nuestros agentes han estado allí.</p>
+                 <br>
+                 <a href="tel:+34900555555" class="btn btn-orange">📞 Llamar a un experto</a>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 100px 0;">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-image"></div>
+                <div class="contact-form-wrapper">
+                    <h2>¿Necesitas inspiración a medida?</h2>
+                    <p>Déjanos tus datos y un diseñador de viajes te contactará sin compromiso.</p>
+                    <form id="form-contacto" style="margin-top: 30px;">
+                        <input type="text" placeholder="Tu Nombre Completo" required>
+                        <input type="email" placeholder="Tu Mejor Email" required>
+                        <textarea placeholder="Cuéntanos qué buscas..." rows="4"></textarea>
+                        <button type="submit" class="btn btn-primary" style="background: var(--primary-color); color: white; width: 100%; border: none;">Solicitar Propuesta Personalizada</button>
+                    </form>
+                    <div id="msg-contacto-exito">
+                        ¡Gracias! Hemos recibido tu solicitud. Revisa tu email pronto.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="newsletter-box">
+                <h3>Únete al Club Aventura</h3>
+                <p>Recibe ofertas secretas que no publicamos en la web.</p>
+                <form id="form-news" style="margin-top: 20px;">
+                    <input type="email" placeholder="Tu email aquí..." required style="margin-bottom: 10px;">
+                    <button type="submit" class="btn btn-orange" style="width: 100%;">Suscribirme</button>
+                </form>
+                <div id="mensaje-newsletter">
+                    ✓ ¡Suscripción confirmada! Bienvenid@ a bordo.
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <p>
+                    Contacto: <a href="mailto:hola@viajesaventura.com" style="color: var(--secondary-color);">hola@viajesaventura.com</a>
+                </p>
+                <br>
+                <p style="font-size: 0.9rem;">© 2024 Viajes Aventura S.L. Todos los derechos reservados.</p>
+                <p style="font-size: 0.8rem; margin-top: 50px; color: #444;">(Sigue haciendo scroll para probar el activador de profundidad...)</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Formulario Redirección
+        document.getElementById('form-reserva').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Simulamos un pequeño tiempo de carga para más realismo
+            const btn = this.querySelector('button');
+            btn.innerHTML = 'Verificando disponibilidad...';
+            btn.style.opacity = '0.7';
+            setTimeout(() => {
+                window.location.href = 'gracias.html';
+            }, 1000);
+        });
+
+        // 2. Formulario AJAX (DataLayer Event)
+        document.getElementById('form-contacto').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = this;
+            const msg = document.getElementById('msg-contacto-exito');
+            form.style.opacity = '0.5';
+            
+            setTimeout(() => {
+                form.style.display = 'none';
+                msg.style.display = 'block';
+                
+                // EL PUSH AL DATALAYER (Lo que importa para la clase)
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    'event': 'generate_lead',
+                    'form_type': 'contact_ajax',
+                    'location': 'main_section'
+                });
+                console.log("GTM Event sent: generate_lead");
+            }, 1000);
+        });
+
+        // 3. Newsletter (Visibilidad)
+        document.getElementById('form-news').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = this;
+            const msg = document.getElementById('mensaje-newsletter');
+            
+            setTimeout(() => {
+                form.style.display = 'none';
+                msg.style.display = 'block';
+            }, 800);
+        });
+    </script>
+</body>
+</html>

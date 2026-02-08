@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refugio Patitas | Adopta y Salva Vidas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e67e22; /* Naranja cálido */
+            --secondary-color: #27ae60; /* Verde esperanza */
+            --text-dark: #2c3e50;
+            --bg-light: #f9f3ed; /* Tono crema suave */
+        }
+        body { margin: 0; font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.6; background: var(--bg-light); }
+        h1, h2, h3 { font-family: 'Nunito', sans-serif; font-weight: 900; margin: 0; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 60px 0; }
+        a { text-decoration: none; }
+
+        /* Botones */
+        .btn { display: inline-block; padding: 15px 35px; border-radius: 50px; font-weight: 800; font-family: 'Nunito', sans-serif; transition: transform 0.2s, box-shadow 0.2s; border: none; cursor: pointer; }
+        /* ESTA ES LA CLASE QUE DEBEN TRACKEAR EN EL EXAMEN */
+        .btn-donate { background: var(--primary-color); color: white; font-size: 1.2rem; box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4); }
+        .btn-donate:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(230, 126, 34, 0.6); }
+        .btn-volunteer { background: var(--secondary-color); color: white; width: 100%; font-size: 1.1rem; }
+        .btn-volunteer:hover { background: #219653; }
+
+        /* Header & Hero */
+        header { background: white; padding: 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo { color: var(--primary-color); font-size: 1.8rem; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.6), rgba(44, 62, 80, 0.6)), url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .hero h2 { font-size: 3rem; margin-bottom: 20px; }
+        .hero p { font-size: 1.3rem; margin-bottom: 40px; opacity: 0.9; }
+
+        /* Secciones */
+        .video-section { background: white; text-align: center; }
+        .video-wrapper { max-width: 700px; margin: 40px auto; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+
+        .volunteer-section { background: var(--primary-color); color: white; }
+        .volunteer-section h2 { color: white; text-align: center; margin-bottom: 40px; }
+        .form-card { background: white; padding: 40px; border-radius: 20px; max-width: 500px; margin: 0 auto; color: var(--text-dark); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        
+        input, textarea { width: 100%; padding: 15px; margin-bottom: 15px; border: 2px solid #eee; border-radius: 10px; box-sizing: border-box; font-family: inherit; }
+        input:focus { outline: none; border-color: var(--secondary-color); }
+        
+        #msg-exito-voluntario { display: none; text-align: center; background: #d4edda; color: #155724; padding: 20px; border-radius: 10px; margin-top: 20px; font-weight: bold; }
+
+        footer { background: #2c3e50; color: #bdc3c7; text-align: center; padding: 60px 20px; }
+        .footer-contact a { color: var(--primary-color); font-weight: bold; font-size: 1.2rem; }
+        .scroll-hint { margin-top: 50px; font-size: 0.8rem; opacity: 0.6; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">🐾 Refugio Patitas</div>
+    </header>
+
+    <div class="hero">
+        <div class="container">
+            <h2>Ellos solo te tienen a ti</h2>
+            <p>Más de 50 animales esperan una segunda oportunidad. ¿Nos ayudas a alimentarlos?</p>
+            <a href="#donar" class="btn btn-donate click-donation-tracking">❤️ Hacer una Donación</a>
+        </div>
+    </div>
+
+    <section class="video-section">
+        <div class="container">
+            <h3>Conoce la historia de "Trufa"</h3>
+            <p>Rescatada hace una semana, su transformación te emocionará.</p>
+            <div class="video-wrapper">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/ScMzIvxBSi4?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="volunteer-section">
+        <div class="container">
+            <h2>¡Te necesitamos en el equipo!</h2>
+            <div class="form-card">
+                <h3>🤝 Hazte Voluntario/a</h3>
+                <p style="margin-bottom: 30px;">Rellena el formulario para venir a pasear y dar cariño a nuestros peludos.</p>
+                
+                <form id="form-voluntario">
+                    <input type="text" placeholder="Tu Nombre Completo" required>
+                    <input type="email" placeholder="Tu Email" required>
+                    <input type="tel" placeholder="Tu Teléfono (WhatsApp)" required>
+                    <button type="submit" class="btn btn-volunteer">ENVIAR SOLICITUD</button>
+                </form>
+                
+                <div id="msg-exito-voluntario">
+                    ¡Gracias! 🐾 Hemos recibido tu solicitud. Te escribiremos pronto por WhatsApp.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h3>¿Tienes dudas o material para donar?</h3>
+            <p class="footer-contact">
+                Escríbenos a: 
+                <a href="mailto:adopciones@refugiopatitas.org">adopciones@refugiopatitas.org</a>
+            </p>
+
+            <div style="margin-top: 40px; border-top: 1px solid #444; padding-top: 20px; font-size: 0.9rem;">
+                <p>© 2024 Refugio Patitas ONG. Todos los derechos reservados.</p>
+                <a href="#" style="color: #bdc3c7; margin: 0 10px;">Aviso Legal</a> | <a href="#" style="color: #bdc3c7; margin: 0 10px;">Política de Privacidad</a>
+            </div>
+            
+            <p class="scroll-hint">(Sigue bajando hasta el final para probar el activador de Scroll Depth...)</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('form-voluntario').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = this;
+            const msg = document.getElementById('msg-exito-voluntario');
+            
+            form.style.opacity = '0.5';
+            this.querySelector('button').innerText = "Enviando...";
+
+            setTimeout(() => {
+                // 1. Ocultamos form y mostramos mensaje (Por si quieren usar Visibilidad)
+                form.style.display = 'none';
+                msg.style.display = 'block';
+
+                // 2. LA TRAMPA PRINCIPAL: El push al DataLayer con nombre único
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    'event': 'new_volunteer_request', // ¡OJO ALUMNOS! Este es el nombre a buscar.
+                    'form_category': 'voluntariado',
+                    'status': 'success'
+                });
+                console.log("Evento enviado al GTM: new_volunteer_request");
+            },

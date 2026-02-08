@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Gracias! | Viajes Aventura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #003580;
+            --secondary-color: #f77f00;
+            --bg-light: #f9faff;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            background-color: var(--bg-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            color: #333;
+        }
+        .thank-you-card {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            max-width: 500px;
+            margin: 20px;
+        }
+        h1 { font-family: 'Montserrat', sans-serif; color: var(--primary-color); margin-bottom: 20px; }
+        .check-icon { font-size: 4rem; color: var(--secondary-color); margin-bottom: 20px; display: block; }
+        .btn { display: inline-block; padding: 12px 30px; border-radius: 50px; font-weight: 700; text-decoration: none; background: var(--primary-color); color: white; margin-top: 30px; transition: 0.3s; }
+        .btn:hover { background: #002355; }
+        .debug-hint { margin-top: 40px; font-size: 0.85rem; color: #999; border-top: 1px solid #eee; padding-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="thank-you-card">
+        <span class="check-icon">✓</span>
+        <h1>¡Solicitud Recibida!</h1>
+        <p>Hemos recibido tus preferencias. Uno de nuestros agentes expertos te contactará en menos de 24 horas para proponerte el viaje de tu vida.</p>
+        
+        <a href="index.html" class="btn">Volver al inicio</a>
+
+        <div class="debug-hint">
+            (Para el profesor/alumno: Fíjate en la URL. Es <code>/gracias.html</code>. Perfecto para el trigger "Page View").
+        </div>
+    </div>
+</body>
+</html>
