@@ -10,8 +10,11 @@
             --primary-color: #e67e22; /* Naranja cálido */
             --secondary-color: #27ae60; /* Verde esperanza */
             --text-dark: #2c3e50;
-            --bg-light: #f9f3ed; /* Tono crema suave */
+            --bg-light: #f9f3ed;
         }
+        /* Scroll suave para que el botón de donar funcione elegante */
+        html { scroll-behavior: smooth; }
+
         body { margin: 0; font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.6; background: var(--bg-light); }
         h1, h2, h3 { font-family: 'Nunito', sans-serif; font-weight: 900; margin: 0; }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
@@ -20,14 +23,16 @@
 
         /* Botones */
         .btn { display: inline-block; padding: 15px 35px; border-radius: 50px; font-weight: 800; font-family: 'Nunito', sans-serif; transition: transform 0.2s, box-shadow 0.2s; border: none; cursor: pointer; }
-        /* ESTA ES LA CLASE QUE DEBEN TRACKEAR EN EL EXAMEN */
+        
+        /* BOTÓN DONAR (RETO: NO TIENE ID, USAR CLASS) */
         .btn-donate { background: var(--primary-color); color: white; font-size: 1.2rem; box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4); }
         .btn-donate:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(230, 126, 34, 0.6); }
+        
         .btn-volunteer { background: var(--secondary-color); color: white; width: 100%; font-size: 1.1rem; }
         .btn-volunteer:hover { background: #219653; }
 
         /* Header & Hero */
-        header { background: white; padding: 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        header { background: white; padding: 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
         .logo { color: var(--primary-color); font-size: 1.8rem; display: flex; align-items: center; justify-content: center; gap: 10px; }
         
         .hero {
@@ -45,6 +50,12 @@
         .video-section { background: white; text-align: center; }
         .video-wrapper { max-width: 700px; margin: 40px auto; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
 
+        /* NUEVA SECCIÓN DE DONACIÓN */
+        .donation-section { background: #fff8e1; text-align: center; }
+        .donation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
+        .donation-card { background: white; padding: 30px; border-radius: 15px; border: 2px solid #ffe0b2; }
+        .donation-icon { font-size: 3rem; margin-bottom: 15px; display: block; }
+
         .volunteer-section { background: var(--primary-color); color: white; }
         .volunteer-section h2 { color: white; text-align: center; margin-bottom: 40px; }
         .form-card { background: white; padding: 40px; border-radius: 20px; max-width: 500px; margin: 0 auto; color: var(--text-dark); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
@@ -56,8 +67,6 @@
 
         footer { background: #2c3e50; color: #bdc3c7; text-align: center; padding: 60px 20px; }
         .footer-contact a { color: var(--primary-color); font-weight: bold; font-size: 1.2rem; }
-        .scroll-hint { margin-top: 50px; font-size: 0.8rem; opacity: 0.6; }
-
     </style>
 </head>
 <body>
@@ -70,6 +79,7 @@
         <div class="container">
             <h2>Ellos solo te tienen a ti</h2>
             <p>Más de 50 animales esperan una segunda oportunidad. ¿Nos ayudas a alimentarlos?</p>
+            
             <a href="#donar" class="btn btn-donate click-donation-tracking">❤️ Hacer una Donación</a>
         </div>
     </div>
@@ -81,6 +91,34 @@
             <div class="video-wrapper">
                 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
                     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/ScMzIvxBSi4?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="donar" class="donation-section">
+        <div class="container">
+            <h2>Elige cómo ayudar</h2>
+            <p>Tu aportación, por pequeña que sea, compra sacos de pienso.</p>
+            
+            <div class="donation-grid">
+                <div class="donation-card">
+                    <span class="donation-icon">📱</span>
+                    <h3>Bizum</h3>
+                    <p>Código ONG: <strong>00555</strong></p>
+                    <p style="font-size: 0.9rem; color: #777;">Concepto: Donación</p>
+                </div>
+                <div class="donation-card">
+                    <span class="donation-icon">💳</span>
+                    <h3>Transferencia</h3>
+                    <p>ES90 0000 1234 5678</p>
+                    <p style="font-size: 0.9rem; color: #777;">Banco Amigo</p>
+                </div>
+                <div class="donation-card">
+                    <span class="donation-icon">🤝</span>
+                    <h3>Teaming</h3>
+                    <p>1€ al mes</p>
+                    <a href="#" style="color: var(--primary-color); font-weight: bold;">Unirse al grupo &rarr;</a>
                 </div>
             </div>
         </div>
@@ -117,10 +155,10 @@
 
             <div style="margin-top: 40px; border-top: 1px solid #444; padding-top: 20px; font-size: 0.9rem;">
                 <p>© 2024 Refugio Patitas ONG. Todos los derechos reservados.</p>
-                <a href="#" style="color: #bdc3c7; margin: 0 10px;">Aviso Legal</a> | <a href="#" style="color: #bdc3c7; margin: 0 10px;">Política de Privacidad</a>
+                <a href="#" style="color: #bdc3c7; margin: 0 10px;">Aviso Legal</a>
             </div>
             
-            <p class="scroll-hint">(Sigue bajando hasta el final para probar el activador de Scroll Depth...)</p>
+            <p style="font-size: 0.8rem; margin-top: 40px; opacity: 0.5;">(Haz scroll hasta el final para probar el trigger de Profundidad...)</p>
         </div>
     </footer>
 
@@ -134,16 +172,19 @@
             this.querySelector('button').innerText = "Enviando...";
 
             setTimeout(() => {
-                // 1. Ocultamos form y mostramos mensaje (Por si quieren usar Visibilidad)
                 form.style.display = 'none';
                 msg.style.display = 'block';
 
-                // 2. LA TRAMPA PRINCIPAL: El push al DataLayer con nombre único
+                // TRAMPA DEL EXAMEN: DataLayer Push con nombre único
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push({
-                    'event': 'new_volunteer_request', // ¡OJO ALUMNOS! Este es el nombre a buscar.
+                    'event': 'new_volunteer_request', 
                     'form_category': 'voluntariado',
                     'status': 'success'
                 });
-                console.log("Evento enviado al GTM: new_volunteer_request");
-            },
+                console.log("GTM Event: new_volunteer_request");
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
