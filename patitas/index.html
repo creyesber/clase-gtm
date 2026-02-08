@@ -7,13 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Open+Sans&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #e67e22; /* Naranja cálido */
-            --secondary-color: #27ae60; /* Verde esperanza */
+            --primary-color: #e67e22;
+            --secondary-color: #27ae60;
             --text-dark: #2c3e50;
             --bg-light: #f9f3ed;
         }
-        /* Scroll suave para que el botón de donar funcione elegante */
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; } /* Desplazamiento suave */
 
         body { margin: 0; font-family: 'Open Sans', sans-serif; color: var(--text-dark); line-height: 1.6; background: var(--bg-light); }
         h1, h2, h3 { font-family: 'Nunito', sans-serif; font-weight: 900; margin: 0; }
@@ -21,17 +20,17 @@
         section { padding: 60px 0; }
         a { text-decoration: none; }
 
-        /* Botones */
+        /* --- BOTONES --- */
         .btn { display: inline-block; padding: 15px 35px; border-radius: 50px; font-weight: 800; font-family: 'Nunito', sans-serif; transition: transform 0.2s, box-shadow 0.2s; border: none; cursor: pointer; }
         
-        /* BOTÓN DONAR (RETO: NO TIENE ID, USAR CLASS) */
+        /* TRAMPA EXAMEN: Botón sin ID, solo Classes */
         .btn-donate { background: var(--primary-color); color: white; font-size: 1.2rem; box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4); }
         .btn-donate:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(230, 126, 34, 0.6); }
         
         .btn-volunteer { background: var(--secondary-color); color: white; width: 100%; font-size: 1.1rem; }
         .btn-volunteer:hover { background: #219653; }
 
-        /* Header & Hero */
+        /* --- HEADER & HERO --- */
         header { background: white; padding: 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
         .logo { color: var(--primary-color); font-size: 1.8rem; display: flex; align-items: center; justify-content: center; gap: 10px; }
         
@@ -46,16 +45,11 @@
         .hero h2 { font-size: 3rem; margin-bottom: 20px; }
         .hero p { font-size: 1.3rem; margin-bottom: 40px; opacity: 0.9; }
 
-        /* Secciones */
+        /* --- VIDEO --- */
         .video-section { background: white; text-align: center; }
         .video-wrapper { max-width: 700px; margin: 40px auto; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
 
-        /* NUEVA SECCIÓN DE DONACIÓN */
-        .donation-section { background: #fff8e1; text-align: center; }
-        .donation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
-        .donation-card { background: white; padding: 30px; border-radius: 15px; border: 2px solid #ffe0b2; }
-        .donation-icon { font-size: 3rem; margin-bottom: 15px; display: block; }
-
+        /* --- FORMULARIO (Sección destino) --- */
         .volunteer-section { background: var(--primary-color); color: white; }
         .volunteer-section h2 { color: white; text-align: center; margin-bottom: 40px; }
         .form-card { background: white; padding: 40px; border-radius: 20px; max-width: 500px; margin: 0 auto; color: var(--text-dark); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
@@ -65,6 +59,7 @@
         
         #msg-exito-voluntario { display: none; text-align: center; background: #d4edda; color: #155724; padding: 20px; border-radius: 10px; margin-top: 20px; font-weight: bold; }
 
+        /* --- FOOTER --- */
         footer { background: #2c3e50; color: #bdc3c7; text-align: center; padding: 60px 20px; }
         .footer-contact a { color: var(--primary-color); font-weight: bold; font-size: 1.2rem; }
     </style>
@@ -78,9 +73,9 @@
     <div class="hero">
         <div class="container">
             <h2>Ellos solo te tienen a ti</h2>
-            <p>Más de 50 animales esperan una segunda oportunidad. ¿Nos ayudas a alimentarlos?</p>
+            <p>Más de 50 animales esperan una segunda oportunidad.</p>
             
-            <a href="#donar" class="btn btn-donate click-donation-tracking">❤️ Hacer una Donación</a>
+            <a href="#donar" class="btn btn-donate click-donation-tracking">❤️ Hacer Donación / Ayudar</a>
         </div>
     </div>
 
@@ -88,6 +83,7 @@
         <div class="container">
             <h3>Conoce la historia de "Trufa"</h3>
             <p>Rescatada hace una semana, su transformación te emocionará.</p>
+            
             <div class="video-wrapper">
                 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
                     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/ScMzIvxBSi4?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
@@ -96,50 +92,22 @@
         </div>
     </section>
 
-    <section id="donar" class="donation-section">
+    <section id="donar" class="volunteer-section">
         <div class="container">
-            <h2>Elige cómo ayudar</h2>
-            <p>Tu aportación, por pequeña que sea, compra sacos de pienso.</p>
-            
-            <div class="donation-grid">
-                <div class="donation-card">
-                    <span class="donation-icon">📱</span>
-                    <h3>Bizum</h3>
-                    <p>Código ONG: <strong>00555</strong></p>
-                    <p style="font-size: 0.9rem; color: #777;">Concepto: Donación</p>
-                </div>
-                <div class="donation-card">
-                    <span class="donation-icon">💳</span>
-                    <h3>Transferencia</h3>
-                    <p>ES90 0000 1234 5678</p>
-                    <p style="font-size: 0.9rem; color: #777;">Banco Amigo</p>
-                </div>
-                <div class="donation-card">
-                    <span class="donation-icon">🤝</span>
-                    <h3>Teaming</h3>
-                    <p>1€ al mes</p>
-                    <a href="#" style="color: var(--primary-color); font-weight: bold;">Unirse al grupo &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="volunteer-section">
-        <div class="container">
-            <h2>¡Te necesitamos en el equipo!</h2>
+            <h2>¡Tu ayuda es vital!</h2>
             <div class="form-card">
-                <h3>🤝 Hazte Voluntario/a</h3>
-                <p style="margin-bottom: 30px;">Rellena el formulario para venir a pasear y dar cariño a nuestros peludos.</p>
+                <h3>🤝 Únete al equipo</h3>
+                <p style="margin-bottom: 30px;">Rellena el formulario para colaborar económicamente o como voluntario.</p>
                 
                 <form id="form-voluntario">
                     <input type="text" placeholder="Tu Nombre Completo" required>
                     <input type="email" placeholder="Tu Email" required>
-                    <input type="tel" placeholder="Tu Teléfono (WhatsApp)" required>
+                    <input type="tel" placeholder="Tu Teléfono" required>
                     <button type="submit" class="btn btn-volunteer">ENVIAR SOLICITUD</button>
                 </form>
                 
                 <div id="msg-exito-voluntario">
-                    ¡Gracias! 🐾 Hemos recibido tu solicitud. Te escribiremos pronto por WhatsApp.
+                    ¡Gracias! 🐾 Hemos recibido tu solicitud correctamente.
                 </div>
             </div>
         </div>
@@ -147,18 +115,18 @@
 
     <footer>
         <div class="container">
-            <h3>¿Tienes dudas o material para donar?</h3>
+            <h3>¿Tienes material para donar?</h3>
             <p class="footer-contact">
                 Escríbenos a: 
                 <a href="mailto:adopciones@refugiopatitas.org">adopciones@refugiopatitas.org</a>
             </p>
 
             <div style="margin-top: 40px; border-top: 1px solid #444; padding-top: 20px; font-size: 0.9rem;">
-                <p>© 2024 Refugio Patitas ONG. Todos los derechos reservados.</p>
+                <p>© 2024 Refugio Patitas ONG.</p>
                 <a href="#" style="color: #bdc3c7; margin: 0 10px;">Aviso Legal</a>
             </div>
             
-            <p style="font-size: 0.8rem; margin-top: 40px; opacity: 0.5;">(Haz scroll hasta el final para probar el trigger de Profundidad...)</p>
+            <p style="font-size: 0.8rem; margin-top: 40px; opacity: 0.5;">(Fin de página)</p>
         </div>
     </footer>
 
@@ -175,14 +143,14 @@
                 form.style.display = 'none';
                 msg.style.display = 'block';
 
-                // TRAMPA DEL EXAMEN: DataLayer Push con nombre único
+                // TRAMPA DEL EXAMEN: Evento DataLayer con nombre único
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push({
                     'event': 'new_volunteer_request', 
-                    'form_category': 'voluntariado',
+                    'form_category': 'conversion',
                     'status': 'success'
                 });
-                console.log("GTM Event: new_volunteer_request");
+                console.log("GTM Event sent: new_volunteer_request");
             }, 1000);
         });
     </script>
